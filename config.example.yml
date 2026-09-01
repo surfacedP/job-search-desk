@@ -1,0 +1,41 @@
+# Copy this file to config.yml and adjust it for your own search.
+searches:
+  - keywords: '"desktop support engineer" OR "desktop support analyst" OR "deskside support engineer"'
+    location: "London, United Kingdom"
+  - keywords: '"2nd line support engineer" OR "2nd line support analyst" OR "second line support engineer"'
+    location: "London, United Kingdom"
+  - keywords: '"IT support engineer" OR "IT service desk analyst"'
+    location: "London, United Kingdom"
+
+filters:
+  # A job title must match at least one include term. Matching is case-insensitive.
+  include_titles:
+    - "desktop support"
+    - "deskside support"
+    - "2nd line support"
+    - "second line support"
+    - "IT support engineer"
+    - "IT service desk analyst"
+  exclude_titles:
+    - "manager"
+    - "director"
+    - "principal"
+    - "sales"
+    - "software developer"
+  include_locations: []
+  exclude_locations: []
+  include_companies: []
+  exclude_companies: []
+  description_keywords_any: []
+  description_keywords_all: []
+
+settings:
+  max_pages_per_search: 3
+  delay_seconds: 3.0
+  headless: false
+  browser_profile: ".browser-profile"
+  output_csv: "jobs.csv"
+  history_csv: "job_history.csv"
+  database: "jobs.db"
+  fetch_descriptions: false
+

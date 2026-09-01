@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Search Desk</title>
+  <meta name="description" content="A private local dashboard for reviewing LinkedIn job search results.">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">JS</div>
+    <div>
+      <p class="eyebrow">PRIVATE JOB WORKSPACE</p>
+      <h1>Job Search Desk</h1>
+    </div>
+    <div class="local-badge"><span></span> Stored on this computer</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">APPLICATION PIPELINE</p>
+        <h2>Review the right roles.<br><em>Remember every decision.</em></h2>
+        <p class="lede">Your searches, notes and application progress in one calm workspace.</p>
+      </div>
+      <div id="summary" class="summary" aria-label="Application summary"></div>
+    </section>
+
+    <section class="search-runner" aria-labelledby="search-runner-title">
+      <div>
+        <p class="eyebrow">NEW OPPORTUNITIES</p>
+        <h3 id="search-runner-title">Find new jobs</h3>
+        <p>Search LinkedIn using your saved configuration, then update this list automatically.</p>
+      </div>
+      <div class="search-actions">
+        <label>
+          <span>Application type</span>
+          <select id="search-mode">
+            <option value="easy">Easy Apply only</option>
+            <option value="external">External only</option>
+            <option value="both">Both</option>
+          </select>
+        </label>
+        <button id="run-search" type="button">Find new jobs</button>
+      </div>
+      <div id="search-progress" class="search-progress" hidden>
+        <div class="progress-line"><span class="spinner" aria-hidden="true"></span><strong id="search-progress-text">Preparing search…</strong></div>
+        <p id="search-progress-detail"></p>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Job filters">
+      <label class="search-box">
+        <span>Search</span>
+        <input id="search" type="search" placeholder="Title, company, location or notes…" autocomplete="off">
+      </label>
+      <label>
+        <span>Status</span>
+        <select id="status-filter">
+          <option value="all">All statuses</option>
+          <option value="unreviewed">Unreviewed</option>
+          <option value="maybe">Maybe</option>
+          <option value="applied">Applied</option>
+          <option value="not_applying">Not applying</option>
+          <option value="hidden">Hidden</option>
+        </select>
+      </label>
+      <label>
+        <span>Application type</span>
+        <select id="mode-filter">
+          <option value="all">All jobs</option>
+          <option value="easy">Easy Apply</option>
+          <option value="external">External</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="results-heading">
+      <div><span id="result-count">0</span> roles</div>
+      <p id="save-message" role="status" aria-live="polite"></p>
+    </div>
+    <section id="jobs" class="job-grid" aria-live="polite"></section>
+    <div id="empty" class="empty" hidden>
+      <p class="empty-icon">✓</p>
+      <h3>No roles match these filters</h3>
+      <p>Try broadening your search or changing the status filter.</p>
+    </div>
+  </main>
+
+  <template id="job-template">
+    <article class="job-card">
+      <div class="job-accent"></div>
+      <div class="job-main">
+        <div class="job-heading">
+          <div>
+            <div class="badges"></div>
+            <h3 class="job-title"></h3>
+            <p class="job-meta"></p>
+          </div>
+          <a class="open-job" target="_blank" rel="noopener noreferrer">Open job <span>↗</span></a>
+        </div>
+        <p class="seen"></p>
+        <div class="review-row">
+          <label>
+            <span>Decision</span>
+            <select class="status-select">
+              <option value="unreviewed">Unreviewed</option>
+              <option value="applied">Applied</option>
+              <option value="maybe">Maybe</option>
+              <option value="not_applying">Not applying</option>
+              <option value="hidden">Hidden</option>
+            </select>
+          </label>
+          <label class="notes-field">
+            <span>Notes</span>
+            <textarea rows="2" placeholder="Why this role fits, or why you passed…"></textarea>
+          </label>
+          <button class="save-button" type="button">Save</button>
+        </div>
+      </div>
+    </article>
+  </template>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

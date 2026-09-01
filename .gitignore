@@ -1,0 +1,26 @@
+# Local Python environment and caches
+.venv/
+__pycache__/
+*.py[cod]
+
+# LinkedIn login/session data — never share or commit
+.browser-profile/
+
+# Personal configuration and job/application data
+config.yml
+jobs.csv
+job_history.csv
+jobs.db
+jobs.db-shm
+jobs.db-wal
+
+# Local backups and temporary files
+*.bak
+*.day1-backup
+*.tmp
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
